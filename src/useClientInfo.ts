@@ -19,41 +19,41 @@ export default function useClient() {
     return () => window.removeEventListener('resize', setClientInfo, false)
   }, [setClientInfo])
 
-  const isMobile = useCallback(() => screenWidth <= mobile.max, [screenWidth])
+  const isMobile = useMemo(() => screenWidth <= mobile.max, [screenWidth])
 
-  const isTablet = useCallback(
+  const isTablet = useMemo(
     () => screenWidth >= tablet.min && screenWidth <= tablet.max,
     [screenWidth]
   )
 
-  const isSmallLaptop = useCallback(
+  const isSmallLaptop = useMemo(
     () => screenWidth >= smallLaptop.min && screenWidth <= smallLaptop.max,
     [screenWidth]
   )
 
-  const isDesktop = useCallback(
+  const isDesktop = useMemo(
     () => screenWidth >= desktop.min && screenWidth <= desktop.max,
     [screenWidth]
   )
 
-  const isLargeScreen = useCallback(
+  const isLargeScreen = useMemo(
     () => screenWidth >= largeScreen.min,
     [screenWidth]
   )
 
-  const isAndroid = useCallback(() => getCurrentUserAgent() === 'Android', [])
+  const isAndroid = useMemo(() => getCurrentUserAgent() === 'Android', [])
 
-  const isIOS = useCallback(() => getCurrentUserAgent() === 'IOS', [])
+  const isIOS = useMemo(() => getCurrentUserAgent() === 'IOS', [])
 
-  const isChrome = useCallback(() => getCurrentUserAgent() === 'Chrome', [])
+  const isChrome = useMemo(() => getCurrentUserAgent() === 'Chrome', [])
 
-  const isSafari = useCallback(() => getCurrentUserAgent() === 'Safari', [])
+  const isSafari = useMemo(() => getCurrentUserAgent() === 'Safari', [])
 
-  const isFirefox = useCallback(() => getCurrentUserAgent() === 'Firefox', [])
+  const isFirefox = useMemo(() => getCurrentUserAgent() === 'Firefox', [])
 
-  const isOpera = useCallback(() => getCurrentUserAgent() === 'Opera', [])
+  const isOpera = useMemo(() => getCurrentUserAgent() === 'Opera', [])
 
-  const isIE = useCallback(() => getCurrentUserAgent() === 'IE', [])
+  const isIE = useMemo(() => getCurrentUserAgent() === 'IE', [])
 
   return useMemo(
     () => ({
