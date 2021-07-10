@@ -1,6 +1,7 @@
 import { useEffect, useState, useMemo, useCallback } from 'react'
 
 import { deviceWidthBreakpoint } from './breakpoint'
+import { getCurrentUserAgent } from './utils'
 
 const { mobile, tablet, smallLaptop, desktop, largeScreen } =
   deviceWidthBreakpoint
@@ -40,6 +41,20 @@ export default function useClient() {
     [screenWidth]
   )
 
+  const isAndroid = useCallback(() => getCurrentUserAgent() === 'Android', [])
+
+  const isIOS = useCallback(() => getCurrentUserAgent() === 'IOS', [])
+
+  const isChrome = useCallback(() => getCurrentUserAgent() === 'Chrome', [])
+
+  const isSafari = useCallback(() => getCurrentUserAgent() === 'Safari', [])
+
+  const isFirefox = useCallback(() => getCurrentUserAgent() === 'Firefox', [])
+
+  const isOpera = useCallback(() => getCurrentUserAgent() === 'Opera', [])
+
+  const isIE = useCallback(() => getCurrentUserAgent() === 'IE', [])
+
   return useMemo(
     () => ({
       isMobile,
@@ -47,7 +62,27 @@ export default function useClient() {
       isSmallLaptop,
       isDesktop,
       isLargeScreen,
+      isAndroid,
+      isIOS,
+      isChrome,
+      isSafari,
+      isFirefox,
+      isOpera,
+      isIE,
     }),
-    [isMobile, isTablet, isSmallLaptop, isDesktop, isLargeScreen]
+    [
+      isMobile,
+      isTablet,
+      isSmallLaptop,
+      isDesktop,
+      isLargeScreen,
+      isAndroid,
+      isIOS,
+      isChrome,
+      isSafari,
+      isFirefox,
+      isOpera,
+      isIE,
+    ]
   )
 }
