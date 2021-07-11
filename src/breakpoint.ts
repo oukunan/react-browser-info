@@ -10,7 +10,7 @@ export const deviceWidthBreakpoint = {
     max: 480,
   },
   /**
-   *  Desktops and laptops
+   *  Desktops
    */
   desktop: {
     min: 1224,
