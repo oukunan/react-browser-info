@@ -1,6 +1,8 @@
 # react-browser-info
 
-## Install 🛠️
+Browser information for react framework
+
+## Install
 
 ```
    npm install react-browser-info
@@ -14,11 +16,13 @@ or
 
 ## Usage
 
+**React hook**
+
 ```tsx
-import { useBrowerInfo } from 'react-browser-info'
+import { useBrowserInfo } from 'react-browser-info'
 
 function App() {
-  const { isMobile, isTablet, isAndroid, isIOS } = useBrowerInfo()
+  const { isMobile, isTablet, isAndroid, isIOS } = useBrowserInfo()
 
   if (isAndroid) {
     return <div>You are Android user</div>
@@ -33,6 +37,25 @@ function App() {
   }
 
   return <div>Normal content</div>
+}
+```
+
+**React render props**
+
+```tsx
+import { BrowserInfoConnector } from 'react-browser-info'
+
+function App() {
+  return (
+    <BrowserInfoConnector>
+      {({ isMobile, isAndroid }) => (
+        <div>
+          {isMobile && 'You are mobile'}
+          {isAndroid && 'You are android'}
+        </div>
+      )}
+    </BrowserInfoConnector>
+  )
 }
 ```
 
