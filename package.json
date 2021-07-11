@@ -1,5 +1,5 @@
 {
-  "name": "react-client",
+  "name": "react-browser-info",
   "version": "1.0.0",
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
@@ -44,5 +44,8 @@
     "ts-jest": "^27.0.3",
     "typescript": "^4.3.5"
   },
+  "files": [
+    "/lib"
+  ],
   "license": "MIT"
 }

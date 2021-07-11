@@ -5,20 +5,25 @@ import { getCurrentUserAgent } from './getCurrentUserAgent'
 
 const { mobile, desktop } = deviceWidthBreakpoint
 
-export default function useClientInfo() {
+export default function useBrowserInfo() {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth)
 
-  const setClientInfo = useCallback(() => {
+  const setWidth = useCallback(() => {
     setScreenWidth(window.innerWidth)
   }, [])
 
   useEffect(() => {
-    window.addEventListener('resize', setClientInfo, false)
+    window.addEventListener('resize', setWidth, false)
 
-    return () => window.removeEventListener('resize', setClientInfo, false)
-  }, [setClientInfo])
+    return () => window.removeEventListener('resize', setWidth, false)
+  }, [setWidth])
 
   const isMobile = useMemo(() => screenWidth <= mobile.max, [screenWidth])
+
+  const isTablet = useMemo(
+    () => screenWidth > mobile.max && screenWidth < desktop.min,
+    [screenWidth]
+  )
 
   const isDesktop = useMemo(() => screenWidth >= desktop.min, [screenWidth])
 
@@ -39,6 +44,7 @@ export default function useClientInfo() {
   return useMemo(
     () => ({
       isMobile,
+      isTablet,
       isDesktop,
       isAndroid,
       isIOS,
@@ -50,6 +56,7 @@ export default function useClientInfo() {
     }),
     [
       isMobile,
+      isTablet,
       isDesktop,
       isAndroid,
       isIOS,

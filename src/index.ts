@@ -1,1 +1,1 @@
-export { default as useClientInfo } from './useClientInfo'
+export { default as useBrowserInfo } from './useBrowserInfo'
