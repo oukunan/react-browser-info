@@ -10,7 +10,7 @@ export declare const deviceWidthBreakpoint: {
         max: number;
     };
     /**
-     *  Desktops and laptops
+     *  Desktops
      */
     desktop: {
         min: number;

@@ -1,3 +1,4 @@
+export declare type BrowserInfo = ReturnType<typeof useBrowserInfo>;
 export default function useBrowserInfo(): {
     isMobile: boolean;
     isTablet: boolean;
