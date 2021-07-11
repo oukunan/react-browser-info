@@ -5,7 +5,7 @@ import { getCurrentUserAgent } from './getCurrentUserAgent'
 
 const { mobile, desktop } = deviceWidthBreakpoint
 
-export default function useClient() {
+export default function useClientInfo() {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth)
 
   const setClientInfo = useCallback(() => {
