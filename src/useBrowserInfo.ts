@@ -5,6 +5,8 @@ import { getCurrentUserAgent } from './getCurrentUserAgent'
 
 const { mobile, desktop } = deviceWidthBreakpoint
 
+export type BrowserInfo = ReturnType<typeof useBrowserInfo>
+
 export default function useBrowserInfo() {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth)
 
