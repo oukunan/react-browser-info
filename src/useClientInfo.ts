@@ -1,7 +1,7 @@
 import { useEffect, useState, useMemo, useCallback } from 'react'
 
 import { deviceWidthBreakpoint } from './breakpoint'
-import { getCurrentUserAgent } from './utils'
+import { getCurrentUserAgent } from './getCurrentUserAgent'
 
 const { mobile, tablet, smallLaptop, desktop, largeScreen } =
   deviceWidthBreakpoint
