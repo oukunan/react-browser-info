@@ -3,8 +3,7 @@ import { useEffect, useState, useMemo, useCallback } from 'react'
 import { deviceWidthBreakpoint } from './breakpoint'
 import { getCurrentUserAgent } from './getCurrentUserAgent'
 
-const { mobile, tablet, smallLaptop, desktop, largeScreen } =
-  deviceWidthBreakpoint
+const { mobile, desktop } = deviceWidthBreakpoint
 
 export default function useClient() {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth)
@@ -21,25 +20,7 @@ export default function useClient() {
 
   const isMobile = useMemo(() => screenWidth <= mobile.max, [screenWidth])
 
-  const isTablet = useMemo(
-    () => screenWidth >= tablet.min && screenWidth <= tablet.max,
-    [screenWidth]
-  )
-
-  const isSmallLaptop = useMemo(
-    () => screenWidth >= smallLaptop.min && screenWidth <= smallLaptop.max,
-    [screenWidth]
-  )
-
-  const isDesktop = useMemo(
-    () => screenWidth >= desktop.min && screenWidth <= desktop.max,
-    [screenWidth]
-  )
-
-  const isLargeScreen = useMemo(
-    () => screenWidth >= largeScreen.min,
-    [screenWidth]
-  )
+  const isDesktop = useMemo(() => screenWidth >= desktop.min, [screenWidth])
 
   const isAndroid = useMemo(() => getCurrentUserAgent() === 'Android', [])
 
@@ -58,10 +39,7 @@ export default function useClient() {
   return useMemo(
     () => ({
       isMobile,
-      isTablet,
-      isSmallLaptop,
       isDesktop,
-      isLargeScreen,
       isAndroid,
       isIOS,
       isChrome,
@@ -72,10 +50,7 @@ export default function useClient() {
     }),
     [
       isMobile,
-      isTablet,
-      isSmallLaptop,
       isDesktop,
-      isLargeScreen,
       isAndroid,
       isIOS,
       isChrome,
